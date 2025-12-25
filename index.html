@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kaira Kailash Resort – Merry Christmas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle, #0b1d33, #000);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: gold;
+      text-shadow: 0 0 20px red;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px red; }
+      to { text-shadow: 0 0 25px gold; }
+    }
+
+    p {
+      max-width: 600px;
+      font-size: 1.2rem;
+      margin: 15px 0 30px;
+    }
+
+    .gift {
+      width: 150px;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .buttons {
+      margin-top: 25px;
+      display: none;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 22px;
+      border-radius: 30px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      background: linear-gradient(45deg, red, gold);
+      color: black;
+      font-weight: bold;
+    }
+
+    .snow {
+      position: fixed;
+      top: -10px;
+      color: white;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>🎄 Kaira Kailash Resort 🎄</h1>
+
+  <p id="message">
+    Tap the gift to unlock a special Christmas greeting 🎁
+  </p>
+
+  <img src="https://cdn-icons-png.flaticon.com/512/3468/3468377.png"
+       class="gift"
+       id="gift">
+
+  <div class="buttons" id="buttons">
+    <button class="btn" onclick="callResort()">📞 Call</button>
+    <button class="btn" onclick="whatsapp()">💬 WhatsApp</button>
+    <button class="btn" onclick="locationMap()">📍 Location</button>
+  </div>
+</div>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<script>
+  const gift = document.getElementById("gift");
+  const message = document.getElementById("message");
+  const buttons = document.getElementById("buttons");
+  const music = document.getElementById("music");
+
+  gift.addEventListener("click", () => {
+    gift.style.display = "none";
+    message.innerHTML = `
+      ✨ Welcome to <b>Kaira Kailash Resort</b> ✨<br><br>
+      Celebrate the magic of Christmas surrounded by nature,
+      comfort, and unforgettable moments. 🎄🏨
+    `;
+    buttons.style.display = "flex";
+    music.play();
+    fireworks();
+  });
+
+  function callResort() {
+    window.location.href = "tel:8630633387";
+  }
+
+  function whatsapp() {
+    window.location.href = "https://wa.me/918630633387";
+  }
+
+  function locationMap() {
+    window.open("https://goo.gl/maps/gSQi7QUwmA9zeA4X6", "_blank");
+  }
+
+  function createSnow() {
+    const snow = document.createElement("div");
+    snow.className = "snow";
+    snow.innerHTML = "❄";
+    snow.style.left = Math.random() * window.innerWidth + "px";
+    snow.style.fontSize = Math.random() * 10 + 10 + "px";
+    snow.style.animationDuration = Math.random() * 5 + 5 + "s";
+    document.body.appendChild(snow);
+    setTimeout(() => snow.remove(), 10000);
+  }
+
+  setInterval(createSnow, 200);
+
+  function fireworks() {
+    alert("🎆 Merry Christmas from Kaira Kailash Resort 🎄");
+  }
+</script>
+
+</body>
+</html>
